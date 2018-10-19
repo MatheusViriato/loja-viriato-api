@@ -46,6 +46,9 @@ app.get('/api', function(req, res){
 });
 
 app.post('/api/category', function(req, res){
+    
+    res.setHeader("Access-Control-Allow-Origin", "*");
+
     var data = req.body;
     var response = [];
 
