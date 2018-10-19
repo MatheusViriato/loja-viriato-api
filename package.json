@@ -1,5 +1,5 @@
 {
-  "name": "server_loja_viriato",
+  "name": "api_loja_viriato",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
