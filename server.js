@@ -29,7 +29,7 @@ app.get('/api', function(req, res){
 
     con.connect(function(err) {
         if (err) throw err;
-        var sql = "select * from products where category = " + data.category;
+        var sql = "select * from products";
         con.query(sql, function (err, result) {
             if (err) throw err;
             for(var i = 0; i < result.length; i++){
