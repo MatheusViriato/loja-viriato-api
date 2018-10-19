@@ -45,14 +45,14 @@ app.get('/api', function(req, res){
     });
 });
 
-app.post('/api/category', function(req, res){
-    
+app.get('/api/category', function(req, res){
+
     res.setHeader("Access-Control-Allow-Origin", "*");
 
     var data = req.body;
     var response = [];
 
-    var sql = "select * from products where category = " + "'" + data.category + "'";
+    var sql = "select * from products where category = " + "'" + req.query.category + "'";
     con.query(sql, function (err, result) {
         if (err) throw err;
         for(var i = 0; i < result.length; i++){
