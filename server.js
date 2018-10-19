@@ -49,20 +49,17 @@ app.post('/api/category', function(req, res){
     var data = req.body;
     var response = [];
 
-    con.connect(function(err) {
+    var sql = "select * from products where category = " + "'" + data.category + "'";
+    con.query(sql, function (err, result) {
         if (err) throw err;
-        var sql = "select * from products where category = " + data.category;
-        con.query(sql, function (err, result) {
-            if (err) throw err;
-            for(var i = 0; i < result.length; i++){
-                response.push({
-                    img: result[i].img, 
-                    name: result[i].name,
-                    description: result[i].description,
-                    price: result[i].price
-                })
-            }
-            res.send(response);
-        });
+        for(var i = 0; i < result.length; i++){
+            response.push({
+                img: result[i].img, 
+                name: result[i].name,
+                description: result[i].description,
+                price: result[i].price
+            })
+        }
+        res.send(response);
     });
 });
